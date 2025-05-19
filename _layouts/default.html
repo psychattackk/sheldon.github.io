@@ -51,5 +51,35 @@
     </div>
 
     {% include analytics.html %}
+<script>
+  // Wait for DOM to load
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'toggle-theme';
+    toggleBtn.textContent = 'Toggle Light/Dark Mode';
+
+    document.body.appendChild(toggleBtn);
+
+    // Check for saved mode in localStorage
+    const savedMode = localStorage.getItem('themeMode');
+    if (savedMode === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.add('dark-mode');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        localStorage.setItem('themeMode', 'light');
+      } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('themeMode', 'dark');
+      }
+    });
+  });
+</script>
   </body>
 </html>
