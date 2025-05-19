@@ -1,0 +1,151 @@
+/* Base Styles */
+:root {
+  --bg-dark: #000000;
+  --bg-light: #f0f0f0;
+  --text-light: #e0e0e0;
+  --text-dark: #222222;
+  --neon-green: #39ff14;
+  --neon-pink: #ff2d95;
+  --transition-speed: 0.4s;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Light Mode Colors */
+body.light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Dark Mode Colors */
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+/* Neon accent styles for links and highlights */
+a, .neon {
+  color: var(--neon-pink);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover, a:focus {
+  color: var(--neon-green);
+  text-shadow:
+    0 0 5px var(--neon-green),
+    0 0 10px var(--neon-green),
+    0 0 20px var(--neon-green);
+}
+
+/* Container styling */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  user-select: text;
+}
+
+/* Headings with neon glow */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: var(--neon-pink);
+  text-shadow:
+    0 0 7px var(--neon-pink),
+    0 0 15px var(--neon-pink);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  transition: color var(--transition-speed);
+}
+
+/* Paragraphs and text */
+p, li {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Lists */
+ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Contact info bar */
+.contact-info {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--neon-green);
+  margin-bottom: 2rem;
+}
+
+/* Neon animation for highlights */
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 5px var(--neon-pink),
+      0 0 10px var(--neon-pink),
+      0 0 20px var(--neon-pink);
+  }
+  50% {
+    text-shadow:
+      0 0 10px var(--neon-green),
+      0 0 20px var(--neon-green),
+      0 0 30px var(--neon-green);
+  }
+}
+
+.neon-pulse {
+  animation: neonPulse 2.5s ease-in-out infinite;
+}
+
+/* Button styling */
+button.toggle-theme {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--bg-dark);
+  color: var(--neon-pink);
+  border: 2px solid var(--neon-pink);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  z-index: 1000;
+}
+
+button.toggle-theme:hover {
+  background-color: var(--neon-pink);
+  color: var(--bg-dark);
+  box-shadow:
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink);
+}
+
+/* Code blocks (optional) */
+pre, code {
+  font-family: 'Fira Mono', monospace;
+  background-color: #111;
+  color: var(--neon-green);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  user-select: text;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+  .contact-info {
+    flex-direction: column;
+  }
+}
